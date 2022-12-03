@@ -1,0 +1,70 @@
+version: '3.7'
+
+volumes:
+  dbdata:
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - '8000:80'
+    depends_on:
+      - php-app
+    volumes:
+      - ./storage/logs:/var/log/nginx
+      - ./public:/app/public:delegated
+
+  php-app:
+    build:
+      context: ./docker/php-app
+    env_file:
+      - docker/variables.env
+    volumes:
+      - ./:/app:delegated
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 1048576
+        hard: 1048576
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  php-cli:
+    build:
+      context: docker/php-cli
+    env_file:
+      - docker/variables.env
+    volumes:
+      - ./:/app:delegated
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 1048576
+        hard: 1048576
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  mysql:
+    image: percona:8.0
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql:delegated
+    ports:
+      - '33060:3306'
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 10
+
+  redis:
+    image: redis:alpine
