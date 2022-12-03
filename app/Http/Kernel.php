@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -10,8 +12,6 @@ class Kernel extends HttpKernel
      * Глобальные HTTP посредники.
      *
      * Эти посредники запускаются на каждый запрос в приложение.
-     *
-     * @var array<int, class-string|string>
      */
     protected $middleware = [
         \Illuminate\Http\Middleware\HandleCors::class,
@@ -22,8 +22,6 @@ class Kernel extends HttpKernel
 
     /**
      * Группы посредников.
-     *
-     * @var array<string, array<int, class-string|string>>
      */
     protected $middlewareGroups = [
         'api' => [
@@ -33,8 +31,6 @@ class Kernel extends HttpKernel
 
     /**
      * Посредники маршрутов.
-     *
-     * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [];
 }

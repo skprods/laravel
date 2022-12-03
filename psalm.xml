@@ -11,9 +11,6 @@
         <ignoreFiles>
             <directory name="vendor"/>
             <directory name="tests"/>
-            <directory name="app/Infrastructure/DBAL/Driver"/>
-            <directory name="app/Infrastructure/*/Tests"/>
-            <directory name="app/Model/*/*/Tests"/>
         </ignoreFiles>
     </projectFiles>
 
@@ -24,19 +21,38 @@
     <issueHandlers>
         <PropertyNotSetInConstructor>
             <errorLevel type="suppress">
+                <referencedProperty name="Illuminate\Database\Eloquent\Model::$table"/>
+                <referencedProperty name="Illuminate\Database\Eloquent\Concerns\HasAttributes::$dateFormat"/>
                 <referencedProperty name="Illuminate\Console\Command::$laravel"/>
                 <referencedProperty name="Illuminate\Console\Command::$name"/>
-                <referencedProperty name="Illuminate\Console\Command::$help"/>
-                <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$components"/>
                 <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$input"/>
                 <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$output"/>
-                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$app"/>
-                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$backupStaticAttributes"/>
-                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$callbackException"/>
-                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$runTestInSeparateProcess"/>
-                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$repository"/>
-                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$locker"/>
-                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$telegramUpdate"/>
+                <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$components"/>
+                <referencedProperty name="Laravel\Lumen\Console\Kernel::$artisan"/>
+                <referencedProperty name="Symfony\Component\Validator\ConstraintValidator::$context"/>
+                <referencedProperty name="Illuminate\Http\Request::$convertedFiles"/>
+                <referencedProperty name="Illuminate\Http\Request::$userResolver"/>
+                <referencedProperty name="Illuminate\Http\Request::$routeResolver"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$attributes"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$request"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$query"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$server"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$files"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$cookies"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$headers"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$languages"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$charsets"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$encodings"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$acceptableContentTypes"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$pathInfo"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$requestUri"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$baseUrl"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$basePath"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$method"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$format"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$session"/>
+                <referencedProperty name="Symfony\Component\HttpFoundation\Request::$locale"/>
+                <referencedProperty name="App\Infrastructure\Controller\Request\HttpRequest::$extractor"/>
             </errorLevel>
         </PropertyNotSetInConstructor>
     </issueHandlers>
