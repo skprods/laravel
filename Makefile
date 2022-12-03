@@ -30,3 +30,24 @@ db-migration:
 db-migration-test:
 	docker compose exec mysql mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS app_test;"
 	docker compose run --rm -e DB_DATABASE=app_test php-cli php artisan migrate:fresh --drop-views
+
+lint: \
+	composer-validate \
+	phplint \
+	php-cs-fixer \
+	phpstan \
+	psalm
+phplint:
+	docker compose run --rm php-cli vendor/bin/phplint
+php-cs-fixer:
+	docker compose run --rm php-cli vendor/bin/php-cs-fixer fix --dry-run --diff --show-progress=dots --allow-risky=yes -v
+php-cs-fixer-fix:
+	docker compose run --rm php-cli vendor/bin/php-cs-fixer fix --verbose --diff --show-progress=dots --allow-risky=yes
+phpstan:
+	docker compose run --rm php-cli vendor/bin/phpstan analyse --xdebug
+phpstan-generate-baseline:
+	docker compose run --rm php-cli vendor/bin/phpstan analyse --generate-baseline
+psalm:
+	docker compose run --rm php-cli vendor/bin/psalm
+psalm-generate-baseline:
+	docker compose run --rm php-cli vendor/bin/psalm --no-cache --set-baseline=psalm-baseline.xml

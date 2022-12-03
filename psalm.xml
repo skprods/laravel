@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<psalm
+    cacheDirectory="var/psalm"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="app"/>
+
+        <ignoreFiles>
+            <directory name="vendor"/>
+            <directory name="tests"/>
+            <directory name="app/Infrastructure/DBAL/Driver"/>
+            <directory name="app/Infrastructure/*/Tests"/>
+            <directory name="app/Model/*/*/Tests"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <fileExtensions>
+        <extension name=".php"/>
+    </fileExtensions>
+
+    <issueHandlers>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <referencedProperty name="Illuminate\Console\Command::$laravel"/>
+                <referencedProperty name="Illuminate\Console\Command::$name"/>
+                <referencedProperty name="Illuminate\Console\Command::$help"/>
+                <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$components"/>
+                <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$input"/>
+                <referencedProperty name="Illuminate\Console\Concerns\InteractsWithIO::$output"/>
+                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$app"/>
+                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$backupStaticAttributes"/>
+                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$callbackException"/>
+                <referencedProperty name="Illuminate\Foundation\Testing\TestCase::$runTestInSeparateProcess"/>
+                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$repository"/>
+                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$locker"/>
+                <referencedProperty name="App\Infrastructure\Telegram\Processor\AsyncTelegramHandler::$telegramUpdate"/>
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+    </issueHandlers>
+</psalm>

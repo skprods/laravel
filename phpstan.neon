@@ -1,0 +1,15 @@
+parameters:
+    parallel:
+        maximumNumberOfProcesses: 8
+
+    fileExtensions:
+        - php
+
+    paths:
+        - 'app'
+
+    excludePaths:
+        - 'app/Model/*/Tests/*'
+
+    checkMissingIterableValueType: false
+    inferPrivatePropertyTypeFromConstructor: true
