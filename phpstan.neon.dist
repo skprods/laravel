@@ -20,6 +20,3 @@ parameters:
 
     checkMissingIterableValueType: false
     inferPrivatePropertyTypeFromConstructor: true
-
-    ignoreErrors:
-        - '#.+ should start with "Abstract" prefix#'

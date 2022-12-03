@@ -96,5 +96,9 @@ return (new PhpCsFixer\Config())
         ],
         'php_unit_test_class_requires_covers' => false,
         'php_unit_internal_class' => [],
+
+        'global_namespace_import' => [
+            'import_classes' => true,
+        ],
     ])
     ->setFinder($finder);
