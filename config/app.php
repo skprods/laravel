@@ -186,7 +186,7 @@ return [
          * Package Service Providers...
          */
 
-        App\Providers\EventServiceProvider::class,
+        \App\Infrastructure\Event\EventServiceProvider::class,
     ],
 
     /*
