@@ -1,4 +1,4 @@
-FROM php:8.1.12-cli-alpine
+FROM php:8.1-cli-alpine
 
 # Install required librairies
 RUN apk update && apk add autoconf g++ make git unzip \
