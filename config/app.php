@@ -1,5 +1,6 @@
 <?php
 
+use App\Infrastructure\CommandBus\CommandBusServiceProvider;
 use Illuminate\Support\Facades\Facade;
 
 return [
@@ -183,6 +184,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         // Инфраструктурные провайдеры
+        \App\Infrastructure\CommandBus\CommandBusServiceProvider::class,
         \App\Infrastructure\Controller\ControllerServiceProvider::class,
         \App\Infrastructure\DBAL\DBALServiceProvider::class,
         \App\Infrastructure\Event\EventServiceProvider::class,
