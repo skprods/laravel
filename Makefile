@@ -28,7 +28,7 @@ composer-validate:
 db-migration:
 	docker compose run --rm php-cli php artisan migrate:fresh --drop-views
 db-migration-test:
-	docker compose exec mysql mysql -uroot -proot -e "CREATE DATABASE IF NOT EXISTS app_test;"
+	docker compose exec postgres sh /scripts/init-testing-db.sh
 	docker compose run --rm -e DB_DATABASE=app_test php-cli php artisan migrate:fresh --drop-views
 
 lint: \

@@ -2,11 +2,11 @@ FROM php:8.1-fpm-alpine
 
 # Install required librairies
 RUN apk update && apk add autoconf g++ make git unzip \
-    libzip-dev icu-dev libxml2-dev libpng-dev libxslt-dev \
+    libzip-dev icu-dev libxml2-dev libpng-dev libxslt-dev libpq-dev \
     unixodbc-dev gnupg
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql zip intl bcmath gd sockets pcntl xsl
+RUN docker-php-ext-install pdo pdo_pgsql zip intl bcmath gd sockets pcntl xsl
 RUN docker-php-ext-enable pcntl
 
 RUN pecl install xdebug-3.1.5 redis

@@ -7,6 +7,6 @@
 - nginx
 - php-fpm
 - php-cli
-- mysql (percona)
+- postgresql
 
 Из сборки удалены все ненужные файлы и лишние пакеты.

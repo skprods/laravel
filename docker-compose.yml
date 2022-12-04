@@ -28,7 +28,7 @@ services:
         soft: 1048576
         hard: 1048576
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
       redis:
         condition: service_started
@@ -46,25 +46,24 @@ services:
         soft: 1048576
         hard: 1048576
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
       redis:
         condition: service_started
 
-  mysql:
-    image: percona:8.0
+  postgres:
+    image: postgres:14
     environment:
-      MYSQL_DATABASE: app
-      MYSQL_ROOT_USER: root
-      MYSQL_ROOT_PASSWORD: root
+      POSTGRES_DB: app
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
     volumes:
-      - dbdata:/var/lib/mysql:delegated
+      - ./docker/postgres/init-testing-db.sh:/scripts/init-testing-db.sh
+      - dbdata:/var/lib/postgresql/data:delegated
     ports:
-      - '33060:3306'
+      - "54320:5432"
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      timeout: 10s
-      retries: 10
+      test: ["CMD", "pg_isready"]
 
   redis:
     image: redis:alpine
