@@ -182,10 +182,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*
-         * Package Service Providers...
-         */
-
+        // Инфраструктурные провайдеры
+        \App\Infrastructure\Controller\ControllerServiceProvider::class,
+        \App\Infrastructure\DBAL\DBALServiceProvider::class,
         \App\Infrastructure\Event\EventServiceProvider::class,
     ],
 
